@@ -43,7 +43,7 @@ func NewClient(publicKey string, privateKey string) *Client {
 // TODO create hash
 // TODO fmt url fmt.Sprintf("")
 func (c *Client) getmd5Hash(ts int64) string {
-	tsHash := strconv.Itoa(int(ts))
+	tsHash := strconv.Itoa(10(ts))
 	hash := md5.Sum([]byte(tsHash + c.privateKey + c.publicKey))
 	return hex.EncodeToString(hash[:])
 }
@@ -72,4 +72,14 @@ func (c *Client) getCharactersLimit(l int) ([]CharacterData, error) {
 	}
 
 	return characterData.Data.Results, nil
+}
+func main(){
+	client := NewClient(publicKey, privateKey)
+	characters, err := client.getCharactersLimit(10)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, character := range characters {
+		fmt.Println(character.Name)
+	}
 }
