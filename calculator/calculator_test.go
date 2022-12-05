@@ -3,7 +3,7 @@ package calculator_test
 import (
 	"testing"
 
-	"github.com/Ladywiz09/pivottechschool/cmd_/calculator"
+	"github.com/Ladywiz09/pivottechschool/calculator"
 )
 
 func TestCalculator(t *testing.T) {
@@ -17,7 +17,7 @@ func TestCalculator(t *testing.T) {
 		"Subtract":     {a: 2, b: 1, want: 1, op: calculator.Subtract},
 		"Multiply":     {a: 2, b: 2, want: 4, op: calculator.Multiply},
 		"Divide":       {a: 8, b: 2, want: 4, op: calculator.Divide},
-		"DivideByZero": {a: 2, b: 0, want: 0, op: calculator.Divide, err: calculator.ErrDivideByZero()},
+		"DivideByZero": {a: 2, b: 0, want: 0, op: calculator.Divide}, err: calculator.ErrDivideByZero()},
 	}
 
 	for name, test := range tests {
