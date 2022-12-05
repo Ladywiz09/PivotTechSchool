@@ -43,6 +43,9 @@ func TestCalculator(t *testing.T) {
 			if test.err == nil && err != nil {
 				t.Errorf("got q%, want nil", err, test.err)
 			}
+			if got != test.want {
+				t.Errorf("got %d, want %d", got, test.want)
+			}
 		})
 	}
 }
