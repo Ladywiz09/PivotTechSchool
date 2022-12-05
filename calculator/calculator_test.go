@@ -3,7 +3,7 @@ package calculator_test
 import (
 	"testing"
 
-	"github.com/Ladywiz09/pivottechschool/cmd_/calculator"
+	"github.com/Ladywiz09/pivottechschool/calculator"
 )
 
 func TestCalculator(t *testing.T) {
@@ -16,8 +16,8 @@ func TestCalculator(t *testing.T) {
 		"Add":          {a: 1, b: 2, want: 3, op: calculator.Add},
 		"Subtract":     {a: 2, b: 1, want: 1, op: calculator.Subtract},
 		"Multiply":     {a: 2, b: 2, want: 4, op: calculator.Multiply},
-		"Divide":       {a: 8, b: 2, want: 4, op: calculator.Divide},
-		"DivideByZero": {a: 2, b: 0, want: 0, op: calculator.Divide, err: calculator.ErrDivideByZero()},
+		"Divide":       {a: 8, b: 2, want: 4, opWithErr: calculator.Divide},
+		"DivideByZero": {a: 2, b: 0, want: 0, opWithErr: calculator.Divide, err: calculator.ErrDivideByZero{}},
 	}
 
 	for name, test := range tests {
@@ -34,14 +34,14 @@ func TestCalculator(t *testing.T) {
 
 			if test.err != nil {
 				if err == nil {
-					t.Errorf("Test failed", err, test.err)
+					t.Error("Test failed", err, test.err)
 				}
 				if err.Error() != test.err.Error() {
-					t.Errorf("got q%, want q%", err, test.err)
+					t.Error("got q%, want q%", err, test.err)
 				}
 			}
 			if test.err == nil && err != nil {
-				t.Errorf("got q%, want nil", err, test.err)
+				t.Error("got q%, want nil", err, test.err)
 			}
 			if got != test.want {
 				t.Errorf("got %d, want %d", got, test.want)
