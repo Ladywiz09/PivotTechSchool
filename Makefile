@@ -5,3 +5,4 @@ test:
 
 build:
 	cd caculator && go build -o calculator
+	
